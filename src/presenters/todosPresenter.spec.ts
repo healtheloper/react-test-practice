@@ -22,6 +22,7 @@ describe('TodosPresenter', () => {
     expect(todosPresenter.getNewId()).toEqual(2);
     todosPresenter.delete(1, update);
     expect(todosPresenter.getNewId()).toEqual(1);
+    expect(update).toHaveBeenCalledTimes(1);
   });
 
   it('add todo', () => {
@@ -32,10 +33,12 @@ describe('TodosPresenter', () => {
     todosPresenter.add(newTodo.title, update);
     const newTodos = [...todos, newTodo];
     expect(todosPresenter.getTodos()).toEqual(newTodos);
+    expect(update).toHaveBeenCalledTimes(1);
   });
 
   it('delete todo', () => {
     todosPresenter.delete(1, update);
     expect(todosPresenter.getTodos()).toEqual([]);
+    expect(update).toHaveBeenCalledTimes(1);
   });
 });
