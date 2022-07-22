@@ -14,21 +14,19 @@ const App: React.FC = () => {
     todosPresenter.delete(todoId, setTodos);
   };
 
-  const handleClickAddTodo = () => {
+  const handleSubmit = () => {
     if (!inputRef.current) return;
     const title = inputRef.current.value;
     todosPresenter.add(title, setTodos);
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <h1>Hello World</h1>
       <input ref={inputRef} type="text" />
-      <button type="button" onClick={handleClickAddTodo}>
-        생성
-      </button>
+      <button type="submit">생성</button>
       <Todos todos={todos} onClickDeleteTodo={handleClickDeleteTodo} />
-    </div>
+    </form>
   );
 };
 
