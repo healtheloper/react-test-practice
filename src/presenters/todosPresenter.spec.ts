@@ -18,9 +18,15 @@ describe('TodosPresenter', () => {
     expect(todosPresenter.getTodos()).toEqual(todos);
   });
 
+  it('get new todo id', () => {
+    expect(todosPresenter.getNewId()).toEqual(2);
+    todosPresenter.delete(1, update);
+    expect(todosPresenter.getNewId()).toEqual(1);
+  });
+
   it('add todo', () => {
     const newTodo = {
-      id: 2,
+      id: todosPresenter.getNewId(),
       title: '두번째 투두',
     };
     todosPresenter.add(newTodo.title, update);
