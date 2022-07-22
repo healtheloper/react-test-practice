@@ -5,9 +5,8 @@ const TodoAddForm = ({ onTodoAdd }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!inputRef.current) return;
-    const title = inputRef.current.value;
-    onTodoAdd(title);
+    const title = inputRef?.current?.value;
+    if (title) onTodoAdd(title);
   };
 
   return (

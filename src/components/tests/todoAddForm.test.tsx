@@ -17,6 +17,11 @@ describe('Todo Add Form', () => {
     button = screen.getByRole('button');
   });
 
+  it('if doesn`t exist input current, it is not called', async () => {
+    await user.click(button);
+    expect(onTodoAdd).toHaveBeenCalledTimes(0);
+  });
+
   it('load todo add form', async () => {
     await user.type(input, 'new todo');
     await user.click(button);
